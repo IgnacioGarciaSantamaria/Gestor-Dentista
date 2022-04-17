@@ -7,4 +7,5 @@ public interface TratamientoService {
     Tratamiento retreiveTratamiento(String id);
     void deleteTratamiento(String id);
     Tratamiento updateTratamiento(String dni,Tratamiento tratamiento);
+    Tratamiento createTratamiento(Tratamiento tratamiento);
 }

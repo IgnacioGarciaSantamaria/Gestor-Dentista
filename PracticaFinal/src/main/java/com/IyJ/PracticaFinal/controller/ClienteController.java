@@ -1,12 +1,16 @@
 package com.IyJ.PracticaFinal.controller;
 
+import java.util.List;
+
 import com.IyJ.PracticaFinal.model.Cliente;
 import com.IyJ.PracticaFinal.service.ClienteService;
+import com.IyJ.PracticaFinal.joins.ClienteHistorialJoin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,6 +40,13 @@ public class ClienteController {
 
     // /api/v1/clientes/02634832K/
 
+    @PostMapping("/clientes")
+    public ResponseEntity<Cliente> createCliente(@RequestBody Cliente cliente) {
+        cliente.setId(null);
+        Cliente newCliente = clienteService.createCliente(cliente);
+        return ResponseEntity.ok().body(newCliente);
+    }
+
     @DeleteMapping("/clientes/{dni}/")
     public ResponseEntity<Cliente> deleteCliente(@PathVariable String dni){
         clienteService.deleteCliente(dni);
@@ -51,4 +62,11 @@ public class ClienteController {
             return ResponseEntity.ok().body(newCliente);
         }
     }
+
+    @GetMapping("/join/clientes/historiales")
+    public ResponseEntity<List<ClienteHistorialJoin>> retrieveClienteHistorial() {
+        List<ClienteHistorialJoin> clienteHistorial = clienteService.retreiveClienteHistorial();
+        return ResponseEntity.ok().body(clienteHistorial);
+    }
+
 }

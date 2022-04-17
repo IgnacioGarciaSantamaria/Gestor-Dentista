@@ -1,6 +1,7 @@
 package com.IyJ.PracticaFinal.controller;
 
 import com.IyJ.PracticaFinal.model.Tratamiento;
+import com.IyJ.PracticaFinal.repository.TratamientoRepository;
 import com.IyJ.PracticaFinal.service.TratamientoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,6 +31,13 @@ public class TratamientoController {
     public ResponseEntity<Tratamiento> retreiveTratamiento(@PathVariable String id){
         Tratamiento response = tratamientoService.retreiveTratamiento(id);
         return ResponseEntity.ok().body(response);
+    }
+
+    @PostMapping("/tratamientos")
+    public ResponseEntity<Tratamiento> createTratamiento(@RequestBody Tratamiento tratamiento) {
+        tratamiento.setId(null);
+        Tratamiento newTratamiento = tratamientoService.createTratamiento(tratamiento);
+        return ResponseEntity.ok().body(newTratamiento);
     }
 
     @DeleteMapping("/tratamientos/{id}/")

@@ -13,6 +13,11 @@ public class TratamientoServiceImplementation implements TratamientoService{
     private TratamientoRepository tratamientoRepository;
 
     @Override
+    public Tratamiento createTratamiento(Tratamiento tratamiento) {
+        return tratamientoRepository.save(tratamiento);
+    }
+
+    @Override
     public Iterable<Tratamiento> retreiveTratamientos(){
         return tratamientoRepository.findAll();
     }

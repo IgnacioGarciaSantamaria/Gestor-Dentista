@@ -1,22 +1,16 @@
-package com.IyJ.PracticaFinal.model;
+package com.IyJ.PracticaFinal.joins;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
-
-
-
-
-@Table("TRATAMIENTO")
-public class Tratamiento {
-    @Id
+public class HistorialTratamientosJoin {
+    
     private Long id;
-
+    private String dni;
     private String nombre;
     private int precio;
     private String descripcion;
 
-    public Tratamiento(Long id, String nombre, int precio, String descripcion) {
+    public HistorialTratamientosJoin(Long id, String dni, String nombre, int precio, String descripcion) {
         this.id = id;
+        this.dni = dni;
         this.nombre = nombre;
         this.precio = precio;
         this.descripcion = descripcion;
@@ -28,6 +22,14 @@ public class Tratamiento {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
