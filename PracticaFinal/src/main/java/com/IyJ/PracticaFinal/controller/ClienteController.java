@@ -26,10 +26,10 @@ public class ClienteController {
         return ResponseEntity.ok().body(response);
     }
 
-    // /api/v1/clientes/?apellidos=Fernandez-Picazo
+    // /api/v1/clientes/?apellidos=de Clemente Fernandez-Picazo
 
     @GetMapping("/clientes/{dni}/")
-    public ResponseEntity<Cliente> retreiveWine(@PathVariable String dni){
+    public ResponseEntity<Cliente> retreiveCliente(@PathVariable String dni){
         Cliente response = clienteService.retreiveCliente(dni);
         return ResponseEntity.ok().body(response);
     }
@@ -37,13 +37,13 @@ public class ClienteController {
     // /api/v1/clientes/02634832K/
 
     @DeleteMapping("/clientes/{dni}/")
-    public ResponseEntity<Cliente> deleteWine(@PathVariable String dni){
+    public ResponseEntity<Cliente> deleteCliente(@PathVariable String dni){
         clienteService.deleteCliente(dni);
         return ResponseEntity.noContent().build();
     }
     
     @PutMapping("/clientes/{dni}/")
-    public ResponseEntity<Cliente> updateWine(@PathVariable String dni, @RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> updateCliente(@PathVariable String dni, @RequestBody Cliente cliente){
         Cliente newCliente = clienteService.updateCliente(dni, cliente);
         if (newCliente == null){
             return ResponseEntity.badRequest().body(null);
