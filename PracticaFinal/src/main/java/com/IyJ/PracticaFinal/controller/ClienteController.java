@@ -35,7 +35,11 @@ public class ClienteController {
     @GetMapping("/clientes/{dni}/")
     public ResponseEntity<Cliente> retreiveCliente(@PathVariable String dni){
         Cliente response = clienteService.retreiveCliente(dni);
-        return ResponseEntity.ok().body(response);
+        if(response != null){
+            return ResponseEntity.ok().body(response);
+        } else {
+            return ResponseEntity.badRequest().body(response);
+        }
     }
 
     // /api/v1/clientes/02634832K/
@@ -43,8 +47,13 @@ public class ClienteController {
     @PostMapping("/clientes")
     public ResponseEntity<Cliente> createCliente(@RequestBody Cliente cliente) {
         cliente.setId(null);
-        Cliente newCliente = clienteService.createCliente(cliente);
-        return ResponseEntity.ok().body(newCliente);
+        Boolean response = clienteService.createCliente(cliente);
+        if(response){
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+            
     }
 
     @DeleteMapping("/clientes/{dni}/")
@@ -55,6 +64,7 @@ public class ClienteController {
     
     @PutMapping("/clientes/{dni}/")
     public ResponseEntity<Cliente> updateCliente(@PathVariable String dni, @RequestBody Cliente cliente){
+        cliente.setId(null);
         Cliente newCliente = clienteService.updateCliente(dni, cliente);
         if (newCliente == null){
             return ResponseEntity.badRequest().body(null);

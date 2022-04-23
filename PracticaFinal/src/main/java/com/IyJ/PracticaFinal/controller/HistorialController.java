@@ -33,15 +33,23 @@ public class HistorialController {
     @GetMapping("/historiales/{id}/")
     public ResponseEntity<Historial> retreiveHistorial(@PathVariable String id){
         Historial response = historialService.retreiveHistorial(id);
-        return ResponseEntity.ok().body(response);
+        if(response != null){
+            return ResponseEntity.ok().body(response);
+        } else {
+            return ResponseEntity.badRequest().body(response);
+        }
     }
     // /api/v1/historiales/?fecha=2008-10-31
 
     @PostMapping("/historiales")
     public ResponseEntity<Historial> createHistorial(@RequestBody Historial historial) {
         historial.setId(null);
-        Historial newHistorial = historialService.createHistorial(historial);
-        return ResponseEntity.ok().body(newHistorial);
+        Historial response = historialService.createHistorial(historial);
+        if(response != null){
+            return ResponseEntity.ok().body(response);
+        } else {
+            return ResponseEntity.badRequest().body(response);
+        }
     }
 
     @DeleteMapping("/historiales/{id}/")
@@ -50,7 +58,7 @@ public class HistorialController {
         return ResponseEntity.noContent().build();
     }
 
-    // http://localhost:8080/api/v1/historiales/2/
+
     @PutMapping("/historiales/{id}/")
     public ResponseEntity<Historial> updateHistorial(@PathVariable String id, @RequestBody Historial historial){
         Historial newHistorial = historialService.updateHistorial(id, historial);

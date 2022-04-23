@@ -10,7 +10,7 @@ public interface ClienteService {
     Cliente retreiveCliente(String dni);
     void deleteCliente(String dni);
     Cliente updateCliente(String dni,Cliente cliente);
-    Cliente createCliente(Cliente cliente);
+    Boolean createCliente(Cliente cliente);
 
     List<ClienteHistorialJoin> retreiveClienteHistorial();
 }

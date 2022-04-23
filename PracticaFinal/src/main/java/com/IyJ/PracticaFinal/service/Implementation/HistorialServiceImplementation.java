@@ -1,5 +1,6 @@
 package com.IyJ.PracticaFinal.service.Implementation;
 
+import java.util.Iterator;
 import java.util.List;
 
 import java.time.LocalDate;
@@ -23,7 +24,21 @@ public class HistorialServiceImplementation implements HistorialService{
 
     @Override
     public Historial createHistorial(Historial historial) {
-        return historialRepository.save(historial);
+        Historial newHistorial = null;
+        String dni = historial.getDni();
+        Iterable<Historial> lista = historialRepository.retreiveHistorial(dni);
+        Iterator<Historial> it = lista.iterator();
+        int sum = 0;
+        while (it.hasNext()) {
+            it.next();
+            sum++;
+        }
+        if(sum == 0){
+            newHistorial = historialRepository.save(historial); 
+            return newHistorial;
+        }else{
+            return newHistorial;
+        }
     }
 
     @Override
@@ -37,11 +52,10 @@ public class HistorialServiceImplementation implements HistorialService{
     }
     
     @Override 
-    public Historial retreiveHistorial(String id){
+    public Historial retreiveHistorial(String dni){
         Historial response = null;
-        Long idLong = Long.parseLong(id);
-        if(historialRepository.existsById(idLong)){
-            Iterable<Historial> historiales = historialRepository.retreiveHistorial(idLong);
+        if(historialRepository.retreiveHistorial(dni) != null){
+            Iterable<Historial> historiales = historialRepository.retreiveHistorial(dni);
             for(Historial historial : historiales){
                 response = historial;
             }
@@ -51,15 +65,24 @@ public class HistorialServiceImplementation implements HistorialService{
     }
 
     @Override
-    public void deleteHistorial(String id){
-        Long idLong = Long.parseLong(id);
-        historialRepository.deleteById(idLong);
+    public void deleteHistorial(String dni){
+        Long entrada = null;
+        Iterable<Long> ids = historialRepository.retreiveId(dni); 
+        for(Long id : ids){
+            entrada = id;
+        }
+        historialRepository.deleteById(entrada);
     }
 
     @Override
-    public Historial updateHistorial(String id,Historial historial){
-        Long idLong = Long.parseLong(id);
-        if(historialRepository.existsById(idLong)){
+    public Historial updateHistorial(String dni,Historial historial){
+        Long entrada = null;
+        Iterable<Long> ids = historialRepository.retreiveId(dni); 
+        for(Long id : ids){
+            entrada = id;
+        }
+        if(entrada != null){
+            historialRepository.deleteById(entrada);
             return historialRepository.save(historial);
         } else {
             return null;

@@ -1,5 +1,6 @@
 package com.IyJ.PracticaFinal.service.Implementation;
 
+import java.util.Iterator;
 import java.util.List;
 
 import com.IyJ.PracticaFinal.model.Cliente;
@@ -20,8 +21,22 @@ public class ClienteServiceImplementation implements ClienteService{
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public Cliente createCliente(Cliente cliente) {
-        return clienteRepository.save(cliente);
+    public Boolean createCliente(Cliente cliente) {
+        Boolean response = false;
+        Iterable<Cliente> lista = clienteRepository.retreiveCliente(cliente.getDni());
+        Iterator<Cliente> it = lista.iterator();
+        int sum = 0;
+        while (it.hasNext()) {
+            it.next();
+            sum++;
+        }
+        if(sum == 0){
+            clienteRepository.save(cliente);
+            response = true; 
+            return response;
+        }else{
+            return response;
+        }
     }
 
     @Override
@@ -37,7 +52,7 @@ public class ClienteServiceImplementation implements ClienteService{
     @Override
     public Cliente retreiveCliente(String dni){
         Cliente response = null;
-        if(clienteRepository.existsById(dni)){
+        if(clienteRepository.retreiveCliente(dni) != null){
             Iterable<Cliente> clientes = clienteRepository.retreiveCliente(dni);
             for(Cliente cliente : clientes){
                 response = cliente;
@@ -49,13 +64,24 @@ public class ClienteServiceImplementation implements ClienteService{
 
     @Override
     public void deleteCliente(String dni){
-        clienteRepository.deleteById(dni);
+        Long entrada = null;
+        Iterable<Long> ids = clienteRepository.retreiveId(dni); 
+        for(Long id : ids){
+            entrada = id;
+        }
+        clienteRepository.deleteById(entrada);
     }
 
 
     @Override
     public Cliente updateCliente(String dni,Cliente cliente){
-        if(clienteRepository.existsById(dni)){
+        Long entrada = null;
+        Iterable<Long> ids = clienteRepository.retreiveId(dni); 
+        for(Long id : ids){
+            entrada = id;
+        }
+        if(entrada != null){
+            clienteRepository.deleteById(entrada);
             return clienteRepository.save(cliente);
         } else {
             return null;

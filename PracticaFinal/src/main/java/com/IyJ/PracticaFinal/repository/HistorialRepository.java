@@ -11,6 +11,9 @@ public interface HistorialRepository extends CrudRepository<Historial,Long>{
     @Query("SELECT * FROM HISTORIAL WHERE HISTORIAL.DATE= :fecha")
     public Iterable<Historial> retreiveHistorialesByFecha(LocalDate fecha);
 
-    @Query("SELECT * FROM HISTORIAL WHERE HISTORIAL.ID= :id")
-    public Iterable<Historial> retreiveHistorial(Long id);
+    @Query("SELECT * FROM HISTORIAL WHERE HISTORIAL.DNI= :dni")
+    public Iterable<Historial> retreiveHistorial(String dni);
+
+    @Query("SELECT ID FROM HISTORIAL WHERE HISTORIAL.DNI= :dni")
+    public Iterable<Long> retreiveId(String dni);
 }
