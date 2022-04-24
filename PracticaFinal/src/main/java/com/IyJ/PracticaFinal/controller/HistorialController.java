@@ -61,6 +61,7 @@ public class HistorialController {
 
     @PutMapping("/historiales/{id}/")
     public ResponseEntity<Historial> updateHistorial(@PathVariable String id, @RequestBody Historial historial){
+        historial.setId(null);
         Historial newHistorial = historialService.updateHistorial(id, historial);
         if (newHistorial == null){
             return ResponseEntity.badRequest().body(null);
