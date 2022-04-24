@@ -4,4 +4,4 @@ En esta práctica, como se proponía, hemos realizado una aplicación que trabaj
 
 Por otra parte, hemos creado dos operaciones de Join, que juntan según un parámetro información de sendas tablas.
 
-**NOTA:** *La carpeta está dentro de 
+**NOTA:** *La carpeta está dentro de PracticaFinal/src*
