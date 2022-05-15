@@ -1,0 +1,200 @@
+*{
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+button{
+    background-color: rgba(0, 55, 107, 0.37)!important;
+    border-radius: 10px!important;
+    border: 5px!important;
+    margin-top: 2%;
+    transition: background-color .5s;
+}
+
+button:hover{
+    background-color: rgba(77, 135, 190, 0.37)!important;
+    border-radius: 10px!important;
+    border: 7px!important;
+    margin-top: 2%;
+}
+
+footer{
+    height: 5em;
+    font-size: 15px;
+}
+
+.logoEmpresa{
+    width:8%;
+    height: 8%;
+    text-align: center;
+}
+
+.empresa{
+    font-size: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    text-rendering: optimizeLegibility;
+    
+    
+    color: #131313;
+    letter-spacing: .15em;
+}
+
+.titulo{
+    font-size: 50px;
+}
+
+.subtitulo{
+    margin-top: 10%;
+    font-size: 15px;
+}
+
+.botonCita{
+    width: 50%;
+    margin-left: 2em;
+    margin-bottom: 3em;
+}
+
+.empresaTexto{
+    font-size: 30px;
+    margin-left: 2em;
+}
+
+.cuadroCita{
+    padding-top: 2%;;
+    margin-left: 4em;
+    border: 2px solid black;
+    width: 25em;
+}
+
+.signoReturn{
+    width:100%;
+    height: 100%;
+    text-align: center;
+}
+
+.signoMas{
+    width:100%;
+    height: 100%;
+    text-align: center; 
+}
+
+.logoFooter{
+    width:20%;
+    height: 20%;
+    text-align: center;
+    margin-top: 0.5em;    
+}
+
+.datos{
+    font-size: 20px;
+    margin-right: 2%;
+}
+
+.botones-citas{
+    margin-top: 20%;
+}
+
+.botones-borrar{
+    margin-top: 5%;
+}
+
+.btn-citas{
+    padding: 10%;
+}
+
+#borrar-cita-confirmacion{
+    background-color: white;
+    margin-top: 20%;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 30em;
+}
+
+#crear-cita{
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#fila1{
+    padding-top: 0.25em;
+    height: 2.5em;
+}
+
+#fila2{
+    height: 2.5em;
+}
+
+#imagen{
+    height: 5em;
+}
+
+#indicador-user{
+    font-size: 15px;
+    margin-right: 5%;
+}
+
+#barra{
+    margin-left: 2%;
+    width: 100%;
+}
+
+#btn-return{
+    margin: 20%;
+}
+
+#btn-anadir-cita{
+    margin: 20%;
+
+}
+
+#fecha-seleccionada{
+    border: 1;
+    margin: 1%;
+}
+
+#fecha{
+    width:100%;
+    height: 50em;
+}
+
+#titulo-info-cita{
+    font-size: 25px;
+    margin-right: 5%;
+    margin-top: 2%;
+}
+
+#info-cita{
+    padding-right: 5%;
+}
+
+#dropdownMenuButton{
+    color: black;
+}
+
+#titulo-borrar-cita{
+    font-size: 25px;
+    background-color: #e3f2fd;
+    padding-left: 2%;
+}
+
+#titulo-info-cita-borrar{
+    font-size: 20px;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-left: 2%
+}
+
+.td-cita {
+    width: 100%;
+}
+
+.td-cita > div {
+    width: 100%;
+}
+
+.btn-cita {
+    height: 100%;
+    width: 100%;
+    margin-left: 1%;
+}
