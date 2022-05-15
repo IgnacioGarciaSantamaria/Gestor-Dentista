@@ -29,10 +29,6 @@ public class HistorialServiceImplementation implements HistorialService{
         Iterable<Historial> lista = historialRepository.retreiveHistorial(dni);
         Iterator<Historial> it = lista.iterator();
         int sum = 0;
-        while (it.hasNext()) {
-            it.next();
-            sum++;
-        }
         if(sum == 0){
             newHistorial = historialRepository.save(historial); 
             return newHistorial;

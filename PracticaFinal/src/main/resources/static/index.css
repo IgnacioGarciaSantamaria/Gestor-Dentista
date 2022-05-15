@@ -1,3 +1,22 @@
+*{
+    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+}
+
+#btn-nuevo-trat{
+    background-color:  green!important;
+}
+
+.btns-eliminar{
+    background-color: red!important;
+    font-size: 130%;
+}
+
+.btns-editar{
+    background-color: grey!important;
+    font-size: 130%;
+}
+
+
 .logoEmpresa{
     width:8%;
     height: 8%;
@@ -5,7 +24,6 @@
 }
 
 .empresa{
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     font-size: 50px;
     text-align: center;
     text-transform: uppercase;
@@ -39,7 +57,6 @@ button{
 }
 
 .empresaTexto{
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     font-size: 30px;
     margin-left: 2em;
 }
@@ -59,7 +76,6 @@ button{
 
 footer{
     height: 5em;
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     font-size: 15px;
 }
 
@@ -92,7 +108,6 @@ footer{
 }
 
 #validese{
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     font-size: 25px;
 }
 
@@ -105,7 +120,6 @@ footer{
 }
 
 .etiqueta{
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     font-size: 20px;
     margin-left: 10%;
 }
@@ -121,11 +135,9 @@ footer{
 .alerta{
     width: 25%;
     margin-left: 30%;
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
 }
 
 #indicador-user{
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
     font-size: 15px;
     margin-right: 5%;
 }
@@ -135,21 +147,129 @@ footer{
     width: 100%;
 }
 
-#btn-chg-user{
-    font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
-}
-
 
 #new-client{
     width:100%;
-    height: 30em;
-    background-color: violet;
+    height: 35em;
+}
+
+
+.new-client-entradas{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 120%;
+    height: 100%;
+}
+
+.inputFormsCliente{
+    font-size: 90%;
+    width: 80%;
+}
+
+.form-new-client{
+    border: 2px solid black;
+    height: 98%;
+    font-size: 80%;
+    padding-top: 3%;
+    padding-left: 3%;
 }
 
 #new-client-contenido{
-    background-color: yellow;
+    padding-top: 3%;
 }
 
-#new-client-entradas{
-    background-color: red;
+#tiempo-foto{
+    height: 80%;
+    margin-left: 15%;
+    margin-top: 5%;
+}
+
+.invisible{
+    display: none;
+}
+
+
+
+
+.infoPresentada{
+    font-weight: bold;
+}
+
+#info-presentada{
+    padding-top: 6%;
+}
+
+
+#cuadro-dni{
+    margin-left: 35%;
+}
+
+.cuadroDniExistente{
+    padding-top: 2%;;
+    margin-left: 4em;
+    border: 2px solid black;
+    width: 40%;
+}
+
+#labelDniExistente{
+    margin-left: 3%;
+}
+
+#dniExistente{
+    width: 50%;
+    margin-left: 5%;
+}
+
+#info-cliente-nueva-cita{
+    margin-left: 7%;
+}
+
+#info-tratamientos{
+    margin-left: 7%;
+}
+
+#fecha-cita{
+    margin-left: 7%;
+}
+
+#info-hora{
+    margin-left: 7%;
+}
+
+
+#trat-Buscador{
+    width: 80%;
+    margin-left: 12%;
+}
+
+#listado-tratamientos{
+    border: 2px solid black;
+    margin-left: 8%;
+    margin-top: 4%;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-bottom: 3%;
+}
+
+.btns-tratamientos{
+    width: 100%;
+}
+
+
+#forms-tratamiento{
+    border: 2px solid black;
+    padding-left: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+
+.inputFormsTratamiento{
+    width: 70%;
+}
+
+#info-tratamiento{
+    border: 2px solid black;
+    padding-left: 4%;
+    padding-top: 2%;
 }
