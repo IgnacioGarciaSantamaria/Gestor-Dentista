@@ -103,6 +103,8 @@
                       <p id="tratamiento-nombre" class="infoPresentadaTratamiento">Información del Nombre</p>
                       <label><b>Precio: </b></label><br>
                       <p id="tratamiento-precio" class="infoPresentadaTratamiento">Información del Precio</p>
+                      <label><b>Duración: </b></label><br>
+                      <p id="tratamiento-duracion" class="infoPresentadaTratamiento">Información duración</p>
                       <label><b>Descripción: </b></label><br>
                       <p id="tratamiento-descripcion" class="infoPresentadaTratamiento">Información de la Descripción</p>
                     </div>
@@ -114,6 +116,19 @@
                         <input class="inputFormsTratamiento" type="text" id="nombreTratamiento" name="Identificador" required="required" placeholder="Inserte el Nombre del Tratamiento"><br><br>
                         <label for="precioTratamiento">Precio: </label><br>
                         <input class="inputFormsTratamiento" type="number" id="precioTratamiento" name="Identificador" min="0" required="required" placeholder="Inserte el Precio del Tratamiento"><br><br>
+                        <label for="duraciónTratamiento">Duración (horas): </label>
+                        <select id="seleccionHora" name="select">
+                          <option class="" selected="selected" value="00:30:00">00:30</option>
+                          <option class="" selected="selected" value="01:00:00">01:00</option>
+                          <option class="" selected="selected" value="01:30:00">01:30</option>
+                          <option class="" selected="selected" value="02:00:00">02:00</option>
+                          <option class="" selected="selected" value="02:30:00">02:30</option>
+                          <option class="" selected="selected" value="03:00:00">03:00</option>
+                          <option class="" selected="selected" value="03:30:00">03:30</option>
+                          <option class="" selected="selected" value="04:00:00">04:00</option>
+                          <option class="" selected="selected" value="04:30:00">04:30</option>
+                          <option class="" selected="selected" value="05:00:00">05:00</option>
+                        </select><br><br>
                         <label for="descripcionTratamiento">Descripción: </label><br>
                         <textarea class="inputFormsTratamiento" id="descripcionTratamiento" rows="5" cols="50" required  name="Texto" placeholder="Inserte la Descripción del Tratamiento"></textarea><br><br>
                         <button onclick="return generarTratamiento()" id="nuevo-trat" class="btn btn-primary">Nuevo Tratamiento</button>
