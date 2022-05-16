@@ -1,43 +1,3 @@
-/*let citas = [
-    {
-        id : '1',
-        nombre : 'Jaime',
-        apellidos : 'de Clemente',
-        dni : '02568420X',
-        date : '2001-07-16',
-        time : '9:30',
-        tratamientos : [{
-            id : '1',
-            nombre : 'Endodoncia',
-            precio : '100',
-            duracion : '3:00'
-        }, {
-            id : '2',
-            nombre : 'Blanqueamiento',
-            precio : '150',
-            duracion : '1:30'
-        }]
-    }, {
-        id : '2',
-        nombre : 'Ignacio',
-        apellidos : 'García',
-        dni : '02568520X',
-        date : '2001-07-15',
-        time : '13:30',
-        tratamientos : [{
-            id : '1',
-            nombre : 'Revisión caries',
-            precio : '100',
-            duracion : '1:00'
-        }, {
-            id : '2',
-            nombre : 'Limpieza',
-            precio : '150',
-            duracion : '1:30'
-        }]
-    }
-];*/
-
 const getCitas = async () => {
     let citas;
     let request = await fetch("api/v1/join/clientes/historiales");
@@ -91,7 +51,7 @@ async function getCitaTime(dni) {
         {
             for(let tratamiento of tratamientos)
             {
-                if(tratamiento.id == cita.tratamientoId)
+                if(tratamiento.id == cita.idTratamiento)
                 {
                     tratamientosCita.push(tratamiento);
                 }
@@ -106,7 +66,6 @@ async function getCitaTime(dni) {
         let temp = tratamiento.duracion.split(":");
         let horas = parseInt(temp[0]);
         let minutos = parseInt(temp[1]);
-
         duracion.horas += horas;
         duracion.minutos += minutos;
 
@@ -125,7 +84,7 @@ async function ponerCitas(fecha) {
         if(cita.date == fecha){
             const temp = cita.time.split(":");
             let selector = "#time-"+temp[0].toString()+temp[1].toString();
-            let duracion = getCitaTime(cita);
+            let duracion = await getCitaTime(cita.dni);
             let saltos = duracion.horas + Math.round(duracion.minutos / 30);
 
             let cliente = cita.nombre + " " +cita.apellidos;
@@ -139,7 +98,7 @@ async function ponerCitas(fecha) {
                 <div></div>
             </td>`);
             let height = $(`#${tdSelector}`).height();
-            $(`#${tdSelector} > div`).append(`<button style="height: ${height}px;" class="btn-cita" id="${dni}" onClick="mostrarInfoCita(${dni})">${cliente}</button>`);
+            $(`#${tdSelector} > div`).append(`<button style="height: ${height}px;" class="btn-cita" id="${dni}" onClick="mostrarInfoCita('${dni}')">${cliente}</button>`);
         }
     }
     localStorage.setItem('fecha', fecha);
@@ -169,15 +128,13 @@ async function mostrarInfoCita(dni)
         {
             for(let tratamiento of tratamientos)
             {
-                if(tratamiento.id == cita.tratamientoId)
+                if(tratamiento.id == cita.idTratamiento)
                 {
                     tratamientosCita.push(tratamiento);
                 }
             }
         }
     }
-    console.log(tratamientosCita);
-    console.log(tratamientosCita.length);
     for(let cita of citas)
     {
         if(cita.dni == dni)

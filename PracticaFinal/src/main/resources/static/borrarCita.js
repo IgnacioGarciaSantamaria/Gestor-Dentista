@@ -1,4 +1,4 @@
-let citas = [
+/*let citas = [
     {
         id : '1',
         nombre : 'Jaime',
@@ -36,43 +36,85 @@ let citas = [
             duracion : '1:30'
         }]
     }
-];
+];*/
 
-function mostrarInfoCitaEliminar(id)
+const getCitas = async () => {
+    let citas;
+    let request = await fetch("api/v1/join/clientes/historiales");
+    if(request.status === 200)
+    {
+        data = await request.json();
+        citas = data;
+    }
+    else {
+        alert("Error al conectarse al servidor de citas");
+    }
+    return citas;
+}
+
+const getTratamientos = async () => {
+    let tratamientos;
+    let request = await fetch("api/v1/tratamientos");
+    if(request.status === 200){
+        data = await request.json();
+        tratamientos = data;
+    }else{
+        alert("Error al conectarse al servidor de tratamientos");
+    }
+    return tratamientos;
+}
+
+async function mostrarInfoCitaEliminar(dni)
 {
+    let citas = await getCitas();
+    let tratamientos = await getTratamientos();
+    let tratamientosCita = [];
     for(let cita of citas)
     {
-        if(cita.id == id)
+        if(cita.dni == dni && cita.date == sacarFecha())
+        {
+            for(let tratamiento of tratamientos)
+            {
+                if(tratamiento.id == cita.idTratamiento)
+                {
+                    tratamientosCita.push(tratamiento);
+                }
+            }
+        }
+    }
+    for(let cita of citas)
+    {
+        if(cita.dni == dni)
         {
             $("#nombre-eliminar").html(cita.nombre);
             $("#apellidos-eliminar").html(cita.apellidos);
             $("#dni-eliminar").html(cita.dni);
             i=1;
-            let tratamientosCita = " ";
-            for(let tratamiento of cita.tratamientos)
+            let tratamientosEscribir = " ";
+            for(let tratamiento of tratamientosCita)
             {
-                if(i < cita.tratamientos.length){
-                    tratamientosCita = tratamientosCita + tratamiento.nombre+ " , ";
+                if(i < tratamientosCita.length){
+                    tratamientosEscribir = tratamientosEscribir + tratamiento.nombre+ " , ";
                 } else {
-                    tratamientosCita = tratamientosCita + tratamiento.nombre;
+                    tratamientosEscribir = tratamientosEscribir + tratamiento.nombre;
                 }
                 i++;
             }
-            $("#tratamientos-eliminar").html(tratamientosCita);
+            $("#tratamientos-eliminar").html(tratamientosEscribir);
         }
     }
 }
 
-function borrarCita(id)
+async function borrarCita(dni)
 {
+    let citas = await getCitas();
     for(let cita of citas)
     {
-
-        if(cita.id == id)
+        if(cita.dni == dni)
         {
             citas.filter(cita);
         }
     }
 }
 
-mostrarInfoCitaEliminar(localStorage.getItem('idSelected'));
+mostrarInfoCitaEliminar(localStorage.getItem('dniSelected'));
