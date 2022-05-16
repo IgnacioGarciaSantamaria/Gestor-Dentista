@@ -13,8 +13,7 @@ button{
 button:hover{
     background-color: rgba(77, 135, 190, 0.37)!important;
     border-radius: 10px!important;
-    border: 7px!important;
-    margin-top: 2%;
+    border: 5px!important;
 }
 
 footer{
@@ -84,6 +83,17 @@ footer{
     margin-right: 2%;
 }
 
+.btn-historial{
+    margin: 1%;
+}
+
+.cuadroDniExistente{
+    padding-top: 2%;;
+    margin-left: 4em;
+    border: 2px solid black;
+    width: 40%;
+}
+
 #crear-cita{
     margin-left: 25%;
     margin-top: 5%;
@@ -117,3 +127,24 @@ footer{
     margin: 20%;
 }
 
+#input-dni{
+    width: 100%
+}
+
+#columna-historiales{
+    padding-left: 2%
+}
+
+#foto-espera-img{
+    width: 90%;
+    margin: 5%;
+}
+
+#info-cliente-seleccionado{
+    width: 100%;
+    margin-top: 2%;
+}
+
+#historial-titulo{
+    margin-top: 2%;
+}

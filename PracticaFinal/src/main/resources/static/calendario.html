@@ -79,7 +79,7 @@
                 <div class="col-8" id="fecha-contenido">
                     <div class="row">
                         <div class="col">
-                            <center><input type="date" id="fecha-seleccionada" value="2001-07-15"></center>
+                            <center><input type="date" id="fecha-seleccionada" value="2022-06-20"></center>
                         </div>
                     </div>
                     <div class="row">
@@ -135,7 +135,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="btn-group dropdown">
+                <!--<div class="btn-group dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       Añadir Tratamientos
                     </button>
@@ -144,6 +144,10 @@
                       <li><a class="dropdown-item" href="./index.html">Ortodoncia</a></li>
                       <li><a class="dropdown-item" href="./index.html">Revisión general</a></li>
                     </ul>
+                </div>-->
+                <div>
+                    <label class="datos" id="info-tratamientos">Añadir Tratamientos: </label>
+                    <select class="datos" id="seleccionTratamiento" name="select" multiple onchange="anadirTratamiento()"></select><br>
                 </div>
             </div>
             <div class="row botones-citas">

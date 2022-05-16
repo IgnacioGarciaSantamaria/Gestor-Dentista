@@ -90,25 +90,24 @@ public class ClienteServiceImplementation implements ClienteService{
 
     @Override
     public List<ClienteHistorialJoin> retreiveClienteHistorial() {
-        String query="SELECT CLIENTE.ID, HISTORIAL.ID, CLIENTE.NOMBRE, CLIENTE.APELLIDOS, CLIENTE.TELEFONO, CLIENTE.CORREO, HISTORIAL.ID_TRATAMIENTO "
+        String query="SELECT HISTORIAL.ID, CLIENTE.NOMBRE, CLIENTE.APELLIDOS, CLIENTE.DNI, HISTORIAL.DATE, HISTORIAL.TIME, HISTORIAL.ID_TRATAMIENTO "
 				+ "FROM CLIENTE "
-				+ "LEFT JOIN HISTORIAL ON CLIENTE.DNI=HISTORIAL.DNI;";
+				+ "JOIN HISTORIAL ON CLIENTE.DNI=HISTORIAL.DNI;";
 		
 		
 		List<ClienteHistorialJoin> clienteHistoriales = jdbcTemplate.query(
                 query,
                 (rs, rowNum) -> {
                         return new ClienteHistorialJoin(
-                                rs.getLong("CLIENTE.ID"),
                                 rs.getLong("HISTORIAL.ID"),
                                 rs.getString("NOMBRE"),
                                 rs.getString("APELLIDOS"),
-                                rs.getInt("TELEFONO"),
-                                rs.getString("CORREO"),
+                                rs.getString("CLIENTE.DNI"),
+                                rs.getDate("DATE"),
+                                rs.getTime("TIME"),
                                 rs.getLong("ID_TRATAMIENTO"));
                 }
         );
-		
 		
 		return clienteHistoriales;
     }
