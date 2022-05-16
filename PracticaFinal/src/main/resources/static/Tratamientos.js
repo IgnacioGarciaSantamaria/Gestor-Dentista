@@ -120,6 +120,7 @@ const generarTratamiento = async () => {
                 id: 1,
                 nombre: document.getElementById("nombreTratamiento").value,
                 precio: parseInt(document.getElementById("precioTratamiento").value),
+                duracion: document.getElementById("seleccionHora").value,
                 descripcion: document.getElementById("descripcionTratamiento").value
             }),
             headers: {
@@ -147,6 +148,7 @@ const verTratamiento = async (id) =>{
         document.getElementById("tratamiento-nombre").textContent = tratamiento.nombre;
         document.getElementById("tratamiento-precio").textContent = tratamiento.precio;
         document.getElementById("tratamiento-descripcion").textContent = tratamiento.descripcion;
+        document.getElementById("tratamiento-duracion").textContent = tratamiento.duracion;
     }else{
         alert("Error al conectarse al servidor de tratamientos");
     }
@@ -186,6 +188,7 @@ const editarTratamiento = async () => {
                 id: idEditar,
                 nombre: document.getElementById("nombreTratamiento").value,
                 precio: parseInt(document.getElementById("precioTratamiento").value),
+                duracion: document.getElementById("seleccionHora").value,
                 descripcion: document.getElementById("descripcionTratamiento").value
             }),
             headers: {
