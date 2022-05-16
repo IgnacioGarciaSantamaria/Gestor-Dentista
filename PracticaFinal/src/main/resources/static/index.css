@@ -2,19 +2,6 @@
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
 }
 
-#btn-nuevo-trat{
-    background-color:  green!important;
-}
-
-.btns-eliminar{
-    background-color: red!important;
-    font-size: 130%;
-}
-
-.btns-editar{
-    background-color: grey!important;
-    font-size: 130%;
-}
 
 
 .logoEmpresa{
@@ -48,12 +35,34 @@ button{
     border-radius: 10px!important;
     border: 5px!important;
     margin-top: 2%;
+    transition: background-color .5s;
+}
+
+button:hover{
+    background-color: rgba(77, 135, 190, 0.37)!important;
+    border-radius: 10px!important;
+    border: 7px!important;
+    margin-top: 2%;
 }
 
 .botonCita{
     width: 50%;
     margin-left: 2em;
     margin-bottom: 3em;
+}
+
+#btn-nuevo-trat{
+    background-color:  green!important;
+}
+
+.btns-eliminar{
+    background-color: red!important;
+    font-size: 130%;
+}
+
+.btns-editar{
+    background-color: grey!important;
+    font-size: 130%;
 }
 
 .empresaTexto{
