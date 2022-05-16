@@ -48,6 +48,14 @@ button{
     border-radius: 10px!important;
     border: 5px!important;
     margin-top: 2%;
+    transition: background-color .5s;
+}
+
+button:hover{
+    background-color: rgba(77, 135, 190, 0.37)!important;
+    border-radius: 10px!important;
+    border: 7px!important;
+    margin-top: 2%;
 }
 
 .botonCita{

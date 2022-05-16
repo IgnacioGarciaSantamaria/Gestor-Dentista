@@ -6,14 +6,17 @@ INSERT INTO CLIENTE VALUES (5,'02568415M', 'Marina', 'de Clemente Fernandez-Pica
 
 
 
-INSERT INTO TRATAMIENTO VALUES (1, 'Limpeza bucal', '50', 'Limpiado a fondo');
-INSERT INTO TRATAMIENTO VALUES (2, 'Caries', '100', 'Empastes y perfeccionamiento');
-INSERT INTO TRATAMIENTO VALUES (3, 'Brackets', '300', 'Correción de la posición de dientes');
-INSERT INTO TRATAMIENTO VALUES (4, 'Revisión Brackets', '20', 'Recambio gomas brackets');
+INSERT INTO TRATAMIENTO VALUES (1, 'Limpeza bucal', '50', '0:30:00', 'Limpiado a fondo');
+INSERT INTO TRATAMIENTO VALUES (2, 'Caries', '100', '2:30:00', 'Empastes y perfeccionamiento');
+INSERT INTO TRATAMIENTO VALUES (3, 'Brackets', '300', '1:00:00', 'Correción de la posición de dientes');
+INSERT INTO TRATAMIENTO VALUES (4, 'Revisión Brackets', '20', '1:30:00', 'Recambio gomas brackets');
 
 
 
 INSERT INTO HISTORIAL VALUES (1, '02568420X', 1, '2022-06-20', '19:00:00');
+INSERT INTO HISTORIAL VALUES (5, '02568420X', 2, '2022-07-20', '19:00:00');
+INSERT INTO HISTORIAL VALUES (7, '02568420X', 4, '2021-07-20', '19:00:00');
+INSERT INTO HISTORIAL VALUES (6, '02568420X', 3, '2022-08-20', '19:00:00');
 INSERT INTO HISTORIAL VALUES (2, '02634832K', 4, '2022-06-20', '11:00:00');
 INSERT INTO HISTORIAL VALUES (3, '02568419D', 3, '2022-07-20', '17:00:00');
 INSERT INTO HISTORIAL VALUES (4, '02568415M', 1, '2022-08-20', '13:00:00');

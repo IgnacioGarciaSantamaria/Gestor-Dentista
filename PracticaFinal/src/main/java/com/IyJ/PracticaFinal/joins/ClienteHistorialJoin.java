@@ -1,29 +1,52 @@
 package com.IyJ.PracticaFinal.joins;
 
+import java.sql.Date;
+import java.sql.Time;
+//import java.time.LocalDate;
+//import java.time.LocalTime;
+
 public class ClienteHistorialJoin {
-    private Long clienteId;
-    private Long historialId;
+
+    private Long id;
     private String nombre;
     private String apellidos;
-    private int telefono;
-    private String correo;
+    private String dni;
+    private Date date;
+    private Time time;
     private Long idTratamiento;
 
-    public ClienteHistorialJoin(Long clienteId, Long historialId, String nombre, String apellidos, int telefono, String correo, Long idTratamiento) {
-        this.clienteId = clienteId;
+    public ClienteHistorialJoin(Long id, String nombre, String apellidos, String dni, Date date, Time time, Long idTratamiento) {
+        this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.historialId = historialId;
+        this.dni = dni;
+        this.setDate(date);
+        this.setTime(time);
         this.idTratamiento = idTratamiento;
     }
 
-    public Long getClienteId() {
-        return clienteId;
+    public Time getTime() {
+        return time;
     }
-    public void setClienteId(Long historialId) {
-        this.historialId = historialId;
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getNombre() {
@@ -38,25 +61,13 @@ public class ClienteHistorialJoin {
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-    public int getTelefono() {
-        return telefono;
-    }
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-    public String getCorreo() {
-        return correo;
-    }
-    public void setCorreo(String correo) {
-        this.correo = correo;
+
+    public Long getId() {
+        return id;
     }
 
-    public Long getHistorialId() {
-        return historialId;
-    }
-
-    public void setHistorialId(Long historialId) {
-        this.historialId = historialId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getIdTratamiento() {
