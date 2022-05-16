@@ -61,13 +61,13 @@ public class HistorialServiceImplementation implements HistorialService{
     }
 
     @Override
-    public void deleteHistorial(String dni){
-        Long entrada = null;
+    public void deleteHistorial(String id){
+        /*Long entrada = null;
         Iterable<Long> ids = historialRepository.retreiveId(dni); 
         for(Long id : ids){
             entrada = id;
-        }
-        historialRepository.deleteById(entrada);
+        }*/
+        historialRepository.deleteById(id);
     }
 
     @Override

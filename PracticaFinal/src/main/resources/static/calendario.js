@@ -29,7 +29,7 @@ function sacarFecha() {
 }
 
 function createCitasTable() {
-    for (let i = 8; i < 20; i++) {
+    for (let i = 10; i < 20; i++) {
         for (let j = 0; j < 2; j++) {
             let min = j == 0 ? "00" : "30";
             $("#citas-table").append(`
@@ -78,6 +78,7 @@ async function getCitaTime(dni) {
 }
 
 async function ponerCitas(fecha) {
+    $("#info-cita-seleccionada").hide();
     let citas = await getCitas();
     for(let cita of citas)
     {
@@ -85,24 +86,27 @@ async function ponerCitas(fecha) {
             const temp = cita.time.split(":");
             let selector = "#time-"+temp[0].toString()+temp[1].toString();
             let duracion = await getCitaTime(cita.dni);
-            let saltos = duracion.horas + Math.round(duracion.minutos / 30);
+            let saltos = (duracion.horas)*2 + Math.round(duracion.minutos / 30);
 
             let cliente = cita.nombre + " " +cita.apellidos;
             let tdSelector = `td-${temp[0]}${temp[1]}`;
 
             let dni = cita.dni;
 
+            console.log(tdSelector, selector, cliente);
             console.log(duracion, saltos);
             
             $(selector).append(`<td class="td-cita" id="${tdSelector}" rowspan="${saltos}">
                 <div></div>
             </td>`);
             let height = $(`#${tdSelector}`).height();
+            console.log(height);
             $(`#${tdSelector} > div`).append(`<button style="height: ${height}px;" class="btn-cita" id="${dni}" onClick="mostrarInfoCita('${dni}')">${cliente}</button>`);
+            localStorage.setItem('hora', cita.time);
         }
     }
     localStorage.setItem('fecha', fecha);
-};
+}
 
 async function quitarCitas(fecha) {
     let citas = await getCitas();
@@ -118,6 +122,8 @@ async function quitarCitas(fecha) {
 
 async function mostrarInfoCita(dni)
 {
+    $("#foto-espera-img").hide();
+    $("#info-cita-seleccionada").show();
     localStorage.setItem('dniSelected', dni);
     let citas = await getCitas();
     let tratamientos = await getTratamientos();
@@ -147,7 +153,7 @@ async function mostrarInfoCita(dni)
             for(let tratamiento of tratamientosCita)
             {
                 if(i < tratamientosCita.length){
-                    tratamientosEscribir = tratamientosEscribir + tratamiento.nombre+ " , ";
+                    tratamientosEscribir = tratamientosEscribir + tratamiento.nombre+ ", ";
                 } else {
                     tratamientosEscribir = tratamientosEscribir + tratamiento.nombre;
                 }
@@ -157,41 +163,6 @@ async function mostrarInfoCita(dni)
         }
     }
 }
-
-let diccTratamientos = new Map();
-
-const presentarTratamientos = async () => {
-    let tratamientos = await getTratamientos();
-    let tratamiento;
-    let desplegable = document.getElementById("seleccionTratamiento");
-    for(let tratamiento of tratamientos){
-        diccTratamientos.set(tratamiento.nombre,tratamiento.id);
-        let option = document.createElement("option");
-        option.value = tratamiento.nombre;
-        option.innerHTML = tratamiento.nombre;
-        option.selected = "selected";
-        desplegable.insertAdjacentElement("afterbegin",option);
-    }
-}
-
-presentarTratamientos();
-
-/*function anadirTratamiento() {
-    let tratamiento = $("#seleccionTratamiento").val();
-    let tratamientosActuales = $("#tratamientos").val();
-    if(tratamientosActuales != null)
-    {
-        for(let cita of citas)
-        {
-            if(localStorage.getItem('idSelected') == cita.id)
-            {
-                cita.tratamientos.push(tratamiento);
-            }
-        }
-        mostrarInfoCita(localStorage.getItem('idSelected'));
-        ponerCitas(sacarFecha());
-    }
-}*/
 
 document.getElementById("fecha-seleccionada").addEventListener('change', updateValue)
 

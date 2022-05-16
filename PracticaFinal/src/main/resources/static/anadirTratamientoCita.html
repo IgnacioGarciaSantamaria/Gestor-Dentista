@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="./fotos/diente.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="./historiales.css">
-    <title>Historiales</title>
+    <link rel="stylesheet" href="calendario.css">
+    <title>Añadir Tratamiento a Cita</title>
   </head>
   <body style="background-color: #e3f2fd">
     <div>
@@ -28,10 +27,10 @@
           <div class="bg-ligth p-4" style="background-color: #fcfcfc">
             <div class="row">
               <div class="col-4">
-                <center><a class="navbar-brand link-nav" href="./calendario.html"><button><p class="empresa subtitulo">Calendario</p></button></a></center>
+                <center><a class="navbar-brand link-nav" href="./Calendario.html"><button><p class="empresa subtitulo">Calendario</p></button></a></center>
               </div>
               <div class="col-4">
-                <center><a class="navbar-brand link-nav" href="./historiales.html"><button><p class="empresa subtitulo">Historiales</p></button></a></center>
+                <center><a class="navbar-brand link-nav" href="./Historiales.html"><button><p class="empresa subtitulo">Historiales</p></button></a></center>
               </div>
               <div class="col-4">
                 <center><a class="navbar-brand link-nav" href="./Tratamientos.html"><button><p class="empresa subtitulo">Tratamientos</p></button></a></center>
@@ -59,62 +58,27 @@
         </nav>
     </div>
 
-    <div>
-        <div class="row">
-            <div class="col-6" id="columna-historiales">
-                <div class="row">
-                    <div class="col-2 align-center">
-                        <a href="./index.html"><button id="btn-return"><img class="signoReturn" src="./fotos/return.png"></button></a>
-                    </div>
-                    <div class="col-1"></div>
-                    <div class="col-9">
-                            <p class="historiales titulo">Historiales</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="row" id="buscador">
-                        <div class="col-2 dni" style="text-align:right;">
-                            <label class="datos">DNI:</label>
-                        </div>
-                        <div class="col-8 dni">
-                            <input type="text" placeholder="Inserte el DNI del cliente a buscar" id="input-dni">
-                        </div>
-                        <div class="col-2">
-                            <button id="btn-search" onClick="buscarHistorial($('#input-dni').val())"><img class="signoSearch" src="./fotos/buscar.png"></button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col" id="btns-historiales">
-
-                        </div>
-                    </div>
-                </div>
+    <div id="cuadro-dni">
+        <p class="empresaTexto subtitulo">Añadir Tratamiento:</p>
+        <div class="cuadroCita datos">
+            <div class="row">
+                <p class="datos" id="info-cliente-nueva-cita">Cliente: Información del cliente</p>
+                <label class="datos" id="info-tratamientos">Tratamiento: </label>
+                <select class="datos" id="seleccionTratamiento" name="select"></select><br>
             </div>
-            <div class="col-1"></div>
-            <div class="col-5">
-                <div class="" id="foto-espera">
-                    <img src="./fotos/tiempo.svg" alt="" id="foto-espera-img">
+            <div class="row">
+                <div class="col-6">
+                    <button class="botonCita" onclick="generarCita()" id="btn-crear-cita">Añadir Tratamiento</button>
                 </div>
-                <div class="row" id="historial-seleccionado">
-                    <div class="row">
-                        <div class="col-3">
-                            <p class="datos" id="historial-titulo">Historial: </p>
-                        </div>
-                        <div class="col-9">
-                            <p id="info-cliente-seleccionado"></p>
-                        </div>
-                        <table id="tabla-historial"></table>
-                    </div>
-                    <div class="row">
-                        <a href="anadirTratamiento.html" style="width:100%"><button style="width:100%">Añadir Tratamiento</button></a>
-                    </div>
+                <div class="col-6">
+                    <a href="./calendario.html"><button class="botonCita">Cancelar</button></a>
                 </div>
-                
             </div>
         </div>
     </div>
 
-    <footer style="background-color: #fcfcfc">
+    <br><br>
+    <footer style="background-color: #fcfcfc">class="datos" 
         <div class="container-fluid">
           <div class="row">
             <div class="col-10">
@@ -130,12 +94,13 @@
             </div>
           </div>
         </div>
-      </footer>
+    </footer>
   
   
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-      <script src="./historiales.js"></script>
+      <script src="./index.js"></script>
+      <script src="./anadirTratamientoCita.js"></script>
     </body>
-  </html>
+</html>

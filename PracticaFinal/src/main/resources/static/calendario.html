@@ -99,67 +99,59 @@
         </div>
         <div class="col-1"></div>
         <div class="col-5" id="info-cita">
-            <div class="row">
-                <p id="titulo-info-cita">Información de la Cita:</p>
+            <div class="" id="foto-espera">
+                <img src="./fotos/tiempo.svg" alt="" id="foto-espera-img">
             </div>
-            <div class="row">
-                <div class="col">
-                    <p class="datos">Nombre:</p>
+            <div id="info-cita-seleccionada">
+                <div class="row">
+                    <p id="titulo-info-cita">Información de la Cita:</p>
                 </div>
-                <div class="col">
-                    <p class="datos" id="nombre"></p>
+                <div class="row">
+                    <div class="col">
+                        <p class="datos">Nombre:</p>
+                    </div>
+                    <div class="col">
+                        <p class="datos" id="nombre"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p class="datos">Apellidos:</p>
+                <div class="row">
+                    <div class="col">
+                        <p class="datos">Apellidos:</p>
+                    </div>
+                    <div class="col">
+                        <p class="datos" id="apellidos"></p>
+                    </div>
                 </div>
-                <div class="col">
-                    <p class="datos" id="apellidos"></p>
+                <div class="row">
+                    <div class="col">
+                        <p class="datos">DNI:</p>
+                    </div>
+                    <div class="col">
+                        <p class="datos" id="dni"></p>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p class="datos">DNI:</p>
+                <div class="row">
+                    <div class="col">
+                        <p class="datos">Tratamientos:</p>
+                    </div>
+                    <div class="col">
+                        <p class="datos" id="tratamientos"></p>
+                    </div>
                 </div>
-                <div class="col">
-                    <p class="datos" id="dni"></p>
+                <div class="row">
+                    <a href="./anadirTratamientoCita.html" style="width:100%"><button style="width:100%">Añadir Tratamientos a la Cita</button></a>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p class="datos">Tratamientos:</p>
+                <div class="row botones-citas">
+                    <div class="col-1"></div>
+                    <div class="col-3 align-center">
+                        <a href="./borrarCita.html"><button class="btn-citas">Eliminar</button></a>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-3 align-center">
+                        <a href="./cobrarCita.html"><button class="btn-citas">Cobrar</button></a>
+                    </div>
+                    <div class="col-1"></div>
                 </div>
-                <div class="col">
-                    <p class="datos" id="tratamientos"></p>
-                </div>
-            </div>
-            <div class="row">
-                <!--<div class="btn-group dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                      Añadir Tratamientos
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <li><a class="dropdown-item" href="./index.html">Blanqueamiento</a></li>
-                      <li><a class="dropdown-item" href="./index.html">Ortodoncia</a></li>
-                      <li><a class="dropdown-item" href="./index.html">Revisión general</a></li>
-                    </ul>
-                </div>-->
-                <div>
-                    <label class="datos" id="info-tratamientos">Añadir Tratamientos: </label>
-                    <select class="datos" id="seleccionTratamiento" name="select" multiple onchange="anadirTratamiento()"></select><br>
-                </div>
-            </div>
-            <div class="row botones-citas">
-                <div class="col-1"></div>
-                <div class="col-3 align-center">
-                    <a href="./borrarCita.html"><button class="btn-citas">Eliminar</button></a>
-                </div>
-                <div class="col-4"></div>
-                <div class="col-3 align-center">
-                    <a href="./cobrarCita.html"><button class="btn-citas">Cobrar</button></a>
-                </div>
-                <div class="col-1"></div>
             </div>
         </div>
     </div>

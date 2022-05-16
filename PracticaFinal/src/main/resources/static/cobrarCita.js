@@ -37,7 +37,7 @@ const getHistoriales = async () => {
     return historiales;
 }
 
-async function mostrarInfoCitaEliminar(dni)
+async function mostrarInfoCitaCobrar(dni)
 {
     let citas = await getCitas();
     let tratamientos = await getTratamientos();
@@ -59,13 +59,15 @@ async function mostrarInfoCitaEliminar(dni)
     {
         if(cita.dni == dni)
         {
-            $("#nombre-eliminar").html(cita.nombre);
-            $("#apellidos-eliminar").html(cita.apellidos);
-            $("#dni-eliminar").html(cita.dni);
+            $("#nombre-cobrar").html(cita.nombre);
+            $("#apellidos-cobrar").html(cita.apellidos);
+            $("#dni-cobrar").html(cita.dni);
             i=1;
             let tratamientosEscribir = " ";
+            let precio = 0;
             for(let tratamiento of tratamientosCita)
             {
+                precio += tratamiento.precio;
                 if(i < tratamientosCita.length){
                     tratamientosEscribir = tratamientosEscribir + tratamiento.nombre+ ", ";
                 } else {
@@ -73,34 +75,10 @@ async function mostrarInfoCitaEliminar(dni)
                 }
                 i++;
             }
-            $("#tratamientos-eliminar").html(tratamientosEscribir);
+            $("#tratamientos-cobrar").html(tratamientosEscribir);
+            $("#precio-cobrar").html(precio+"€");
         }
     }
 }
 
-async function eliminarCita(dni)
-{
-    let historiales = await getHistoriales();
-    for(let historial of historiales)
-    {
-        console.log(historial);
-        if(historial.dni == dni && historial.date == localStorage.getItem('fecha'))
-        {
-            let request = await fetch("api/v1/historiales/"+ historial.id +"/", {
-                method: "DELETE",
-                credentials: "same-origin",
-            });
-            console.log(request);
-            if(request.status === 204)
-            {
-                let mensaje = "Se ha eliminado la cita";
-                alert(mensaje);
-                window.location.href="./calendario.html";
-            } else {
-                alert("No se ha podido conectar al servidor para eliminar la cita");
-            }
-        }
-    }
-}
-
-mostrarInfoCitaEliminar(localStorage.getItem('dniSelected'));
+mostrarInfoCitaCobrar(localStorage.getItem('dniSelected'));

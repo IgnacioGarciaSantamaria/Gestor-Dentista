@@ -1,53 +1,3 @@
-/*let historiales = [
-    {
-        id: '1',
-        clienteID: '1',
-        idTratamiento: '1',
-        date: '2001-07-15',
-        time: '15:00'
-    }, 
-    {
-        id: '2',
-        clienteID: '1',
-        idTratamiento: '3',
-        date: '2002-08-15',
-        time: '15:00'
-    },
-    {
-        id: '3',
-        clienteID: '1',
-        idTratamiento: '2',
-        date: '2010-01-20',
-        time: '15:00'
-    },
-    {
-        id: '4',
-        clienteID: '2',
-        idTratamiento: '4',
-        date: '2005-09-15',
-        time: '15:00'
-    }
-]
-
-let clientes = [
-    {
-        id: '1',
-        dni: '02568420X',
-        nombre: 'Jaime',
-        apellidos: 'de Clemente',
-        telefono: '626855391',
-        correo: 'jaimedeclemente@gmail.com'
-    }, 
-    {
-        id: '2',
-        dni: '02568419D',
-        nombre: 'Ignacio',
-        apellidos: 'García Santamaría',
-        telefono: '626855391',
-        correo: 'jaimedeclemente@gmail.com'
-    }
-]*/
-
 const getClientes = async () => {
     let clientes;
     let request = await fetch("api/v1/clientes");
@@ -152,6 +102,24 @@ async function mostrarHistorial(dni)
                 }
             }
         }
+    }
+}
+
+const buscarHistorial = async (dni) => {
+    let clientes = await getClientes();
+    let a = 0;
+    for(let cliente of clientes)
+    {
+        if(cliente.dni == dni)
+        {
+            a = 1;
+        }
+    }
+    if(a === 1)
+    {
+        mostrarHistorial(dni);
+    } else {
+        alert("El DNI introducido no se encuentra en la base de datos de clientes");
     }
 }
 
