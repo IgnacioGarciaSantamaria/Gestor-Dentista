@@ -13,4 +13,7 @@ public interface ClienteService {
     Boolean createCliente(Cliente cliente);
 
     List<ClienteHistorialJoin> retreiveClienteHistorial();
+
+
+    boolean validarDniTelefono(Cliente cliente);
 }

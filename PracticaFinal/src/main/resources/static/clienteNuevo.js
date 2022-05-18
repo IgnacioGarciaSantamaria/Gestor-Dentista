@@ -64,7 +64,7 @@ const postInfo = async () =>{
         localStorage.setItem('apellidos', document.getElementById("info-apellidos").textContent);    
         window.location.href="./nuevaCita.html";
     }else{
-        alert("No hemos podido subir la información proporcionada al servidor de clientes");
+        alert("No hemos podido subir la información proporcionada al servidor de clientes, asegúrese de que el DNI y el teléfono sean válidos");
     }
 }
 

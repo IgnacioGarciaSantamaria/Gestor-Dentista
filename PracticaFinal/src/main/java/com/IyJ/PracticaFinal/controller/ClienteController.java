@@ -48,7 +48,8 @@ public class ClienteController {
     public ResponseEntity<Cliente> createCliente(@RequestBody Cliente cliente) {
         cliente.setId(null);
         Boolean response = clienteService.createCliente(cliente);
-        if(response){
+        Boolean response_validacion = clienteService.validarDniTelefono(cliente);
+        if(response && response_validacion){
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.badRequest().build();

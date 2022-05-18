@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.IyJ.PracticaFinal.model.Cliente;
+import com.IyJ.PracticaFinal.model.ValidarDni;
+import com.IyJ.PracticaFinal.model.ValidarTelefono;
 import com.IyJ.PracticaFinal.repository.ClienteRepository;
 import com.IyJ.PracticaFinal.service.ClienteService;
 import com.IyJ.PracticaFinal.joins.ClienteHistorialJoin;
@@ -110,5 +112,19 @@ public class ClienteServiceImplementation implements ClienteService{
         );
 		
 		return clienteHistoriales;
+    }
+
+
+    @Override
+    public boolean validarDniTelefono(Cliente cliente){
+        String dni = cliente.getDni();
+        ValidarDni validarDni = new ValidarDni(dni);
+        String telefono = "" + cliente.getTelefono();
+        ValidarTelefono validarTelefono = new ValidarTelefono(telefono);
+        if(validarDni.validar() &&  validarTelefono.validar()){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
