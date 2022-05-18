@@ -115,7 +115,7 @@ async function generarCita() {
     });
 
     if(request.status === 200){
-        alert("Cita generada Correctamente");
+        alert("Tratamiento añadido al historial");
         window.location.href="./historiales.html";
     }else{
         alert("No hemos podido generar la cita adecuadamente");

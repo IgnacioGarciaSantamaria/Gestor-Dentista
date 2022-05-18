@@ -25,7 +25,10 @@ const getTratamientos = async () => {
 }
 
 function sacarFecha() {
-    return document.getElementById("fecha-seleccionada").value;
+    let fecha = document.getElementById("fecha-seleccionada").value;
+    localStorage.setItem("fecha", fecha);
+    return fecha;
+    
 }
 
 function createCitasTable() {
@@ -80,9 +83,12 @@ async function getCitaTime(dni) {
 async function ponerCitas(fecha) {
     $("#info-cita-seleccionada").hide();
     let citas = await getCitas();
+    console.log(citas);
+    let horasPuestas = [];
     for(let cita of citas)
     {
-        if(cita.date == fecha){
+        if(cita.date == fecha && horasPuestas.includes(cita.time)==false){
+            horasPuestas.push(cita.time);
             const temp = cita.time.split(":");
             let selector = "#time-"+temp[0].toString()+temp[1].toString();
             let duracion = await getCitaTime(cita.dni);
@@ -94,14 +100,14 @@ async function ponerCitas(fecha) {
 
             let dni = cita.dni;
 
-            console.log(tdSelector, selector, cliente);
-            console.log(duracion, saltos);
+            //console.log(tdSelector, selector, cliente);
+            //console.log(duracion, saltos);
             
             $(selector).append(`<td class="td-cita" id="${tdSelector}" rowspan="${saltos}">
                 <div></div>
             </td>`);
             let height = $(`#${tdSelector}`).height();
-            console.log(height);
+            //console.log(height);
             $(`#${tdSelector} > div`).append(`<button style="height: ${height}px;" class="btn-cita" id="${dni}" onClick="mostrarInfoCita('${dni}')">${cliente}</button>`);
             localStorage.setItem('hora', cita.time);
         }
@@ -169,7 +175,7 @@ const cambiarHora = () => {
     let date = new Date();
     let fecha = date.toISOString().split('T')[0];
     fechaCita = document.getElementById("fecha-seleccionada");
-    fechaCita.value=fecha;
+    fechaCita.value=localStorage.getItem('fecha');
     fechaCita.min=fecha;
 }
 
