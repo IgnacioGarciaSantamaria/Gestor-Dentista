@@ -165,6 +165,14 @@ async function mostrarInfoCita(dni)
     }
 }
 
+const cambiarHora = () => {
+    let date = new Date();
+    let fecha = date.toISOString().split('T')[0];
+    fechaCita = document.getElementById("fecha-seleccionada");
+    fechaCita.value=fecha;
+    fechaCita.min=fecha;
+}
+
 document.getElementById("fecha-seleccionada").addEventListener('change', updateValue)
 
 function updateValue(e) {
@@ -173,6 +181,7 @@ function updateValue(e) {
 }
 
 $(document).ready(() => {
+    cambiarHora();
     createCitasTable();
     ponerCitas(sacarFecha());
 });

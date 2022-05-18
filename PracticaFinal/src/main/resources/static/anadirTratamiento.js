@@ -2,7 +2,7 @@ let diccTratamientos = new Map();
 
 const insertarInfo = () =>{
     let info = document.getElementById("info-cliente-nueva-cita");
-    info.textContent = localStorage.getItem('nombreCompleto') + " (" + localStorage.getItem('dniSelected') + ')';
+    info.textContent = localStorage.getItem('nombreCompleto') + " (" + localStorage.getItem('dni') + ')';
 }
 
 insertarInfo();
@@ -36,16 +36,6 @@ const presentarTratamientos = async () => {
 }
 
 presentarTratamientos();
-
-const cambiarHora = () => {
-    let date = new Date();
-    let fecha = date.toISOString().split('T')[0];
-    fechaCita = document.getElementById("fechas-disponibles");
-    fechaCita.value=fecha;
-    fechaCita.min=fecha;
-}
-
-cambiarHora();
 
 
 const obtenerFechasBaseDatos = async () =>{
@@ -105,7 +95,7 @@ const compararFecha = async () => {
 compararFecha();
 
 
-const generarCita = async () => {
+async function generarCita() {
     let seleccionTratamiento = document.getElementById("seleccionTratamiento");
     let tratamiento = seleccionTratamiento.options[seleccionTratamiento.selectedIndex].value;
     let seleccionHora = document.getElementById("seleccionHora");
@@ -113,9 +103,9 @@ const generarCita = async () => {
         method: "POST",
         body: JSON.stringify({
             id: 1,
-            dni: localStorage.getItem('dniSelected'),
+            dni: localStorage.getItem('dni'),
             idTratamiento: diccTratamientos.get(tratamiento),
-            date:  document.getElementById('fechas-disponibles').value,
+            date:  document.getElementById('fecha-seleccionada').value,
             time: seleccionHora.options[seleccionHora.selectedIndex].value
         }),
         headers: {
