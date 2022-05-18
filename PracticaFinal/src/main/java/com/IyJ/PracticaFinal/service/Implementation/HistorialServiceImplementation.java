@@ -67,7 +67,8 @@ public class HistorialServiceImplementation implements HistorialService{
         for(Long id : ids){
             entrada = id;
         }*/
-        historialRepository.deleteById(id);
+        Long longId = new Long(id);
+        historialRepository.deleteById(longId);
     }
 
     @Override

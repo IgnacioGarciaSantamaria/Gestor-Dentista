@@ -7,7 +7,7 @@ import com.IyJ.PracticaFinal.model.Historial;
 import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 
-public interface HistorialRepository extends CrudRepository<Historial,String>{
+public interface HistorialRepository extends CrudRepository<Historial,Long>{
     @Query("SELECT * FROM HISTORIAL WHERE HISTORIAL.DATE= :fecha")
     public Iterable<Historial> retreiveHistorialesByFecha(LocalDate fecha);
 
