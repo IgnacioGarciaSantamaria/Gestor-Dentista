@@ -78,7 +78,7 @@ public class HistorialServiceImplementation implements HistorialService{
             entrada = id;
         }
         if(entrada != null){
-            historialRepository.deleteById(entrada);
+            historialRepository.deleteById(""+entrada);
             return historialRepository.save(historial);
         } else {
             return null;

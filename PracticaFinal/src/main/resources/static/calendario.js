@@ -89,6 +89,7 @@ async function ponerCitas(fecha) {
             let saltos = (duracion.horas)*2 + Math.round(duracion.minutos / 30);
 
             let cliente = cita.nombre + " " +cita.apellidos;
+            localStorage.setItem('nombreCompleto', cliente);
             let tdSelector = `td-${temp[0]}${temp[1]}`;
 
             let dni = cita.dni;

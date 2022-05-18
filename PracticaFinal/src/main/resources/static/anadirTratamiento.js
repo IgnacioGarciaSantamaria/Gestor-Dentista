@@ -2,7 +2,7 @@ let diccTratamientos = new Map();
 
 const insertarInfo = () =>{
     let info = document.getElementById("info-cliente-nueva-cita");
-    info.textContent = localStorage.getItem('nombreCompleto') + " (" + localStorage.getItem('dni') + ')';
+    info.textContent = localStorage.getItem('nombreCompleto') + " (" + localStorage.getItem('dniSelected') + ')';
 }
 
 insertarInfo();
@@ -113,7 +113,7 @@ const generarCita = async () => {
         method: "POST",
         body: JSON.stringify({
             id: 1,
-            dni: localStorage.getItem('dni'),
+            dni: localStorage.getItem('dniSelected'),
             idTratamiento: diccTratamientos.get(tratamiento),
             date:  document.getElementById('fechas-disponibles').value,
             time: seleccionHora.options[seleccionHora.selectedIndex].value
