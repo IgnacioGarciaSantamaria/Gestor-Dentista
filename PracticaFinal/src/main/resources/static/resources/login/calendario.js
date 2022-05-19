@@ -83,7 +83,6 @@ async function getCitaTime(dni) {
 async function ponerCitas(fecha) {
     $("#info-cita-seleccionada").hide();
     let citas = await getCitas();
-    console.log(citas);
     let horasPuestas = [];
     for(let cita of citas)
     {

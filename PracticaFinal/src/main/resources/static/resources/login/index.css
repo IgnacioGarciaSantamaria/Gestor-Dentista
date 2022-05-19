@@ -134,10 +134,25 @@ footer{
 }
 
 #botonLogin{
+    background-color: rgba(0, 55, 107, 0.37)!important;
+    border-radius: 10px!important;
+    border: 5px!important;
+    margin-top: 2%;
     width: 15%!important;
     height: 8%;
     margin-left: 63%;
-    margin-top: 5%;
+    padding-right: 2%; 
+    transition: background-color .5s;
+}
+
+#botonLogin:hover{
+    background-color: rgba(77, 135, 190, 0.37)!important;
+    border-radius: 10px!important;
+    border: 7px!important;
+    margin-top: 2%;
+    width: 15%!important;
+    height: 8%;
+    margin-left: 63%;
     padding-right: 2%; 
 }
 

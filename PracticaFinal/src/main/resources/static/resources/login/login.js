@@ -1,10 +1,23 @@
-let usuarios=["Blas", "Jaime", "Ignacio"]
-let contraseña="dentista";
+const getUsers = async () => {
+    let users;
+    let request = await fetch("/api/v1/users");
+    if(request.status === 200)
+    {
+        data = await request.json();
+        users = data;
+    } else {
+        alert("No hemos podido acceder al servidor de usuarios");
+    }
+    return users;
+}
+
+
 let divAlertPass = document.createElement("div");
 let divAlertUser = document.createElement("div");
 
 
 const validarUsuario = () => {
+    let usuarios = await getUsers();
     divAlertPass.innerHTML = "";
     divAlertUser.innerHTML = "";
     let userOK = 0;
@@ -12,8 +25,8 @@ const validarUsuario = () => {
     document.getElementById("user").value = "";
     let pass = document.getElementById("password").value;
     document.getElementById("password").value = "";
-    for(let i=0;i < usuarios.length; i++){
-        if(usuarios[i] == user){
+    for(let usuario of usuarios){
+        if(usuario == user){
             userOK = 1;
             localStorage.setItem('usuario',user);
         }
