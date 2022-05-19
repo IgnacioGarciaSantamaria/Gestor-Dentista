@@ -126,6 +126,7 @@ public class TratamientosControllerTest {
         
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/tratamientos/" + numero + "/";
         HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Basic jaime:dentista");
 
         HttpEntity<Tratamiento> entity = new HttpEntity<>(tratamiento,headers);
 

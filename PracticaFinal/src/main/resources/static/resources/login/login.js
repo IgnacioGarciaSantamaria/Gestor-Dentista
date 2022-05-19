@@ -16,7 +16,8 @@ let divAlertPass = document.createElement("div");
 let divAlertUser = document.createElement("div");
 
 
-const validarUsuario = () => {
+const validarUsuario = async () => {
+    localStorage.setItem('usuario',user);
     let usuarios = await getUsers();
     divAlertPass.innerHTML = "";
     divAlertUser.innerHTML = "";
@@ -46,3 +47,9 @@ const validarUsuario = () => {
         }
     }
 } 
+
+document.getElementById("user").addEventListener('change', updateValue)
+
+function updateValue(e) {
+    localStorage.setItem('usuario', $("#user").val());
+}
