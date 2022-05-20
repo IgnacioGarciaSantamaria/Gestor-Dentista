@@ -40,7 +40,7 @@ Pulsando el menú se puede acceder también a la información sobre los historia
 
 Por otro lado, desde el menú se accede también a la funcionalidad del calendario. En éste podremos encontrar las citas que tendremos cada día. Éstas están representadas por botones con el nombre del usuario que, además, ocupan tanto en el calendario del día como duren los tratamientos a realizar en las mismas. 
 Al pulsar en cualquiera de las citas nos aparecerá en la parte derecha de la pantalla la información de la msima, así como la posibilidad de añadir tratamientos a la cita, eliminarla o cobrarla.
-Si añadimos tratamientos, el botón de la cita cambiará de tamaño conforme a lo explicado anteriormente.
+Si añadimos tratamientos, el botón de la cita cambiará de tamaño conforme a lo explicado anteriormente.Además, solamente dejará añadir los tratamientos que quepan para que no se solapen citas.
 Si deseamos eliminarla, seremos dirigidos a una página que contiene la información de la cita y nos requiere confirmación de la eliminación.
 Si deseamos cobrarla, nos aparecerá el precio total de la cita, calculado como la suma de los precios individuales de cada uno de los tratamientos que en ella se realizan. 
 
