@@ -36,21 +36,49 @@ const getCitas = async () => {
 
 const presentarTratamientos = async () => {
     let desplegable = document.getElementById("seleccionTratamiento");
+    let citas = await getCitas();
+    let citasFecha = [];
+    for(let cita of citas)
+    {
+        if(cita.date == localStorage.getItem('fecha'))
+        {
+            citasFecha.push(cita);
+        }
+    }
     let tratamientos = await obtenerTratamientos();
-    let a = await obtenerHorasFecha(localStorage.getItem('fecha'));
-    console.log(a);
+    let diferencia = "24:00:00";
+    let citaSeleccionada;
+    for(let cita of citasFecha)
+    {
+        if((sumadorRestadorHoras(0,localStorage.getItem('hora'),cita.time)<diferencia || sumadorRestadorHoras(0,localStorage.getItem('hora'),"20:00:00")<diferencia) && cita.time!=localStorage.getItem('hora'))
+        {
+            diferencia = sumadorRestadorHoras(0,localStorage.getItem('hora'),cita.time);
+        } else if(cita.time == localStorage.getItem('hora')) {
+            citaSeleccionada = cita;
+        }
+    }
+    console.log(diferencia, citaSeleccionada);
     for(let tratamiento of tratamientos){
-        //if(sumadorRestadorHoras(1,localStorage.getItem('hora'),tratamiento.duracion))
-        diccTratamientos.set(tratamiento.nombre,tratamiento.id);
-        let option = document.createElement("option");
-        option.value = tratamiento.nombre;
-        option.innerHTML = tratamiento.nombre;
-        option.selected = "selected";
-        desplegable.insertAdjacentElement("afterbegin",option);
+        if(sumadorRestadorHoras(1,tratamiento.duracion,getStringDuracion(citaSeleccionada))<=diferencia)
+        {
+            diccTratamientos.set(tratamiento.nombre,tratamiento.id);
+            let option = document.createElement("option");
+            option.value = tratamiento.nombre;
+            option.innerHTML = tratamiento.nombre;
+            option.selected = "selected";
+            desplegable.insertAdjacentElement("afterbegin",option);
+        }
     }
 }
 
 presentarTratamientos();
+
+const getStringDuracion = async (cita) => {
+    let duracion = await getCitaTime(cita.dni);
+    let duracionstring = ""+duracion.horas+":"+duracion.minutos+":00";
+    console.log(duracionstring);
+    return duracionstring;
+}
 
 
 const generarCita = async () => {
@@ -76,7 +104,7 @@ const generarCita = async () => {
         alert("Cita generada Correctamente");
         window.location.href="./calendario.html";
     }else{
-        alert("No hemos podido generar la cita adecuadamente");
+        alert("No hemos podido añadir este tratamiento");
     }
 }
 
@@ -86,7 +114,7 @@ async function getCitaTime(dni) {
     let tratamientosCita = [];
     for(let cita of citas)
     {
-        if(cita.dni == dni && cita.date == sacarFecha())
+        if(cita.dni == dni && cita.date == localStorage.getItem('fecha'))
         {
             for(let tratamiento of tratamientos)
             {

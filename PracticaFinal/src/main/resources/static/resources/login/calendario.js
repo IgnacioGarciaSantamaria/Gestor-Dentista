@@ -108,7 +108,6 @@ async function ponerCitas(fecha) {
             let height = $(`#${tdSelector}`).height();
             //console.log(height);
             $(`#${tdSelector} > div`).append(`<button style="height: ${height}px;" class="btn-cita" id="${dni}" onClick="mostrarInfoCita('${dni}')">${cliente}</button>`);
-            localStorage.setItem('hora', cita.time);
         }
     }
     localStorage.setItem('fecha', fecha);
@@ -149,8 +148,9 @@ async function mostrarInfoCita(dni)
     }
     for(let cita of citas)
     {
-        if(cita.dni == dni)
+        if(cita.dni == dni && cita.date == sacarFecha())
         {
+            localStorage.setItem('hora',cita.time);
             $("#nombre").html(cita.nombre);
             $("#apellidos").html(cita.apellidos);
             $("#dni").html(cita.dni);
