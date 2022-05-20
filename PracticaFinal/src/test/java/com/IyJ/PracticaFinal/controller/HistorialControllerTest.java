@@ -37,6 +37,7 @@ public class HistorialControllerTest {
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/join/historial/tratamientos";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(headers);
+        headers.add("Authorization", "Basic amFpbWU6ZGVudGlzdGE=");
 
         ResponseEntity<List<HistorialTratamientosJoin>> result = restTemplate.exchange(
             url,
