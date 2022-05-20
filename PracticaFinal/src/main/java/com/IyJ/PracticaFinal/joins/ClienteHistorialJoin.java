@@ -77,4 +77,65 @@ public class ClienteHistorialJoin {
     public void setIdTratamiento(Long idTratamiento) {
         this.idTratamiento = idTratamiento;
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((apellidos == null) ? 0 : apellidos.hashCode());
+        result = prime * result + ((date == null) ? 0 : date.hashCode());
+        result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        result = prime * result + ((idTratamiento == null) ? 0 : idTratamiento.hashCode());
+        result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+        result = prime * result + ((time == null) ? 0 : time.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        ClienteHistorialJoin other = (ClienteHistorialJoin) obj;
+        if (apellidos == null) {
+            if (other.apellidos != null)
+                return false;
+        } else if (!apellidos.equals(other.apellidos))
+            return false;
+        if (date == null) {
+            if (other.date != null)
+                return false;
+        } else if (!date.equals(other.date))
+            return false;
+        if (dni == null) {
+            if (other.dni != null)
+                return false;
+        } else if (!dni.equals(other.dni))
+            return false;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        if (idTratamiento == null) {
+            if (other.idTratamiento != null)
+                return false;
+        } else if (!idTratamiento.equals(other.idTratamiento))
+            return false;
+        if (nombre == null) {
+            if (other.nombre != null)
+                return false;
+        } else if (!nombre.equals(other.nombre))
+            return false;
+        if (time == null) {
+            if (other.time != null)
+                return false;
+        } else if (!time.equals(other.time))
+            return false;
+        return true;
+    }
 }

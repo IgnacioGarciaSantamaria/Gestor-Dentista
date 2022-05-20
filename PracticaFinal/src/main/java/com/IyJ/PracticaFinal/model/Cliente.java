@@ -14,6 +14,9 @@ public class Cliente {
     private int telefono;
     private String correo;
 
+    public Cliente() {
+    }
+
     public Cliente(Long id, String dni, String nombre, String apellidos, int telefono, String correo) {
         this.id = id;
         this.dni = dni;
@@ -60,4 +63,51 @@ public class Cliente {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((apellidos == null) ? 0 : apellidos.hashCode());
+        result = prime * result + ((correo == null) ? 0 : correo.hashCode());
+        result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+        result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+        result = prime * result + telefono;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Cliente other = (Cliente) obj;
+        if (apellidos == null) {
+            if (other.apellidos != null)
+                return false;
+        } else if (!apellidos.equals(other.apellidos))
+            return false;
+        if (correo == null) {
+            if (other.correo != null)
+                return false;
+        } else if (!correo.equals(other.correo))
+            return false;
+        if (dni == null) {
+            if (other.dni != null)
+                return false;
+        } else if (!dni.equals(other.dni))
+            return false;
+        if (nombre == null) {
+            if (other.nombre != null)
+                return false;
+        } else if (!nombre.equals(other.nombre))
+            return false;
+        if (telefono != other.telefono)
+            return false;
+        return true;
+    }
+
 }

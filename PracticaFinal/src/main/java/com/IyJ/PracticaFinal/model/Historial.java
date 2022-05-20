@@ -19,6 +19,9 @@ public class Historial {
     private LocalDate date;
     private LocalTime time;
 
+    public Historial() {
+    }
+
     public Historial(Long id, String dni, String idTratamiento, LocalDate date, LocalTime time) {
         this.id = id;
         this.dni = dni;
@@ -65,6 +68,49 @@ public class Historial {
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((date == null) ? 0 : date.hashCode());
+        result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+        result = prime * result + ((idTratamiento == null) ? 0 : idTratamiento.hashCode());
+        result = prime * result + ((time == null) ? 0 : time.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Historial other = (Historial) obj;
+        if (date == null) {
+            if (other.date != null)
+                return false;
+        } else if (!date.equals(other.date))
+            return false;
+        if (dni == null) {
+            if (other.dni != null)
+                return false;
+        } else if (!dni.equals(other.dni))
+            return false;
+        if (idTratamiento == null) {
+            if (other.idTratamiento != null)
+                return false;
+        } else if (!idTratamiento.equals(other.idTratamiento))
+            return false;
+        if (time == null) {
+            if (other.time != null)
+                return false;
+        } else if (!time.equals(other.time))
+            return false;
+        return true;
     }
 
     
