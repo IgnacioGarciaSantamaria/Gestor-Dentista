@@ -36,6 +36,7 @@ public class TratamientosControllerTest {
 
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/tratamientos";
         HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Basic amFpbWU6ZGVudGlzdGE=");
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         ResponseEntity<Iterable<Tratamiento>> result = restTemplate.exchange(
@@ -56,6 +57,7 @@ public class TratamientosControllerTest {
 
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/tratamientos/" +id +"/";
         HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Basic amFpbWU6ZGVudGlzdGE=");
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         ResponseEntity<Tratamiento> result = restTemplate.exchange(
@@ -74,6 +76,7 @@ public class TratamientosControllerTest {
         String id = "1";
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/tratamientos/" +id +"/";
         HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Basic amFpbWU6ZGVudGlzdGE=");
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
         ResponseEntity<Tratamiento> result = restTemplate.exchange(
@@ -99,6 +102,7 @@ public class TratamientosControllerTest {
         
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/tratamientos";
         HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Basic amFpbWU6ZGVudGlzdGE=");
 
         HttpEntity<Tratamiento> entity = new HttpEntity<>(tratamiento,headers);
 
@@ -126,7 +130,7 @@ public class TratamientosControllerTest {
         
         String url = "http://localhost:" + Integer.toString(port) + "/api/v1/tratamientos/" + numero + "/";
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", "Basic jaime:dentista");
+        headers.add("Authorization", "Basic amFpbWU6ZGVudGlzdGE=");
 
         HttpEntity<Tratamiento> entity = new HttpEntity<>(tratamiento,headers);
 
