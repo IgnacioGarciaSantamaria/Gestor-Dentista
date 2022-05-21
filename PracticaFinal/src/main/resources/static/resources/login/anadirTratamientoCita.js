@@ -50,16 +50,17 @@ const presentarTratamientos = async () => {
     let citaSeleccionada;
     for(let cita of citasFecha)
     {
-        if((sumadorRestadorHoras(0,localStorage.getItem('hora'),cita.time)<diferencia || sumadorRestadorHoras(0,localStorage.getItem('hora'),"20:00:00")<diferencia) && cita.time!=localStorage.getItem('hora'))
+        if((sumadorRestadorHoras(0, cita.time, localStorage.getItem('hora'))<diferencia || sumadorRestadorHoras(0, "20:00:00", localStorage.getItem('hora'))<diferencia) && cita.time!=localStorage.getItem('hora'))
         {
-            diferencia = sumadorRestadorHoras(0,localStorage.getItem('hora'),cita.time);
+            diferencia = sumadorRestadorHoras(0, cita.time, localStorage.getItem('hora'));
         } else if(cita.time == localStorage.getItem('hora')) {
             citaSeleccionada = cita;
         }
     }
     console.log(diferencia, citaSeleccionada);
+    let duracion = await getStringDuracion(citaSeleccionada);
     for(let tratamiento of tratamientos){
-        if(sumadorRestadorHoras(1,tratamiento.duracion,getStringDuracion(citaSeleccionada))<=diferencia)
+        if(sumadorRestadorHoras(1,duracion,tratamiento.duracion)<=diferencia)
         {
             diccTratamientos.set(tratamiento.nombre,tratamiento.id);
             let option = document.createElement("option");
@@ -76,7 +77,6 @@ presentarTratamientos();
 const getStringDuracion = async (cita) => {
     let duracion = await getCitaTime(cita.dni);
     let duracionstring = ""+duracion.horas+":"+duracion.minutos+":00";
-    console.log(duracionstring);
     return duracionstring;
 }
 

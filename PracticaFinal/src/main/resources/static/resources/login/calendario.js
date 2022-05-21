@@ -94,13 +94,10 @@ async function ponerCitas(fecha) {
             let saltos = (duracion.horas)*2 + Math.round(duracion.minutos / 30);
 
             let cliente = cita.nombre + " " +cita.apellidos;
-            localStorage.setItem('nombreCompleto', cliente);
+
             let tdSelector = `td-${temp[0]}${temp[1]}`;
 
             let dni = cita.dni;
-
-            //console.log(tdSelector, selector, cliente);
-            //console.log(duracion, saltos);
             
             $(selector).append(`<td class="td-cita" id="${tdSelector}" rowspan="${saltos}">
                 <div></div>
@@ -129,7 +126,7 @@ async function mostrarInfoCita(dni)
 {
     $("#foto-espera-img").hide();
     $("#info-cita-seleccionada").show();
-    localStorage.setItem('dniSelected', dni);
+    localStorage.setItem('dni', dni);
     let citas = await getCitas();
     let tratamientos = await getTratamientos();
     let tratamientosCita = [];
@@ -150,6 +147,8 @@ async function mostrarInfoCita(dni)
     {
         if(cita.dni == dni && cita.date == sacarFecha())
         {
+            let cliente = cita.nombre + " " +cita.apellidos;
+            localStorage.setItem('nombreCompleto', cliente);
             localStorage.setItem('hora',cita.time);
             $("#nombre").html(cita.nombre);
             $("#apellidos").html(cita.apellidos);
